@@ -1,0 +1,81 @@
+<div class="container">
+ 
+
+  <div class="kanban mat-elevation-z8" >
+      <div class="example-container">
+          <h2>Orçado</h2>
+        
+          <div
+            cdkDropList
+            #orcadoList="cdkDropList"
+            [cdkDropListData]="orcado"
+            [cdkDropListConnectedTo]="[compradoList]"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of orcado" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+  
+  
+  
+        <div class="example-container">
+          <h2>Comprado</h2>
+        
+          <div
+            cdkDropList
+            #compradoList="cdkDropList"
+            [cdkDropListData]="comprado"
+            [cdkDropListConnectedTo]="[entregueList, orcadoList]"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of comprado" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+        
+        <div class="example-container">
+          <h2>Entregue</h2>
+        
+          <div
+            cdkDropList
+            #entregueList="cdkDropList"
+            [cdkDropListData]="entregue"
+            [cdkDropListConnectedTo]="[compradoList, notaFiscalList]"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of entregue" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+        
+  
+
+        <div class="example-container">
+          <h2>Nota Fiscal</h2>
+        
+          <div
+            cdkDropList
+            #notaFiscalList="cdkDropList"
+            [cdkDropListData]="notaFiscal"
+            [cdkDropListConnectedTo]="[entregueList]"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of notaFiscal" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+        
+  
+      <button (click)="voltarReadAll()" class =" novo-todo mat-elevation-z8" mat-stroked-button color="primary">listagem</button>
+      <button (click)="voltarUsersAll()" class =" novo-todo mat-elevation-z8" mat-stroked-button color="primary">Users</button>
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>

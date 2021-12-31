@@ -1,0 +1,45 @@
+<div style="margin:0 30px;" class=" mat-elevation-z8">
+
+
+  <h2 class="description" style="text-align: center;">Usuários Cadastrados</h2>
+  <table>
+      <tr>
+          <th>S.no</th>
+          <th>Nome</th>
+          <th>Perfil</th>
+          <th>Telefone</th>
+          <th>E-mail</th>
+          <th>Edite</th>
+      </tr>
+      <tr *ngFor="let item of list; index as i">   
+          <td>{{ i }}</td>
+          <td>{{ item.nome }}</td>
+          <td>{{ item.perfil }}</td>
+          <td>{{ item.telefone }}</td>
+          <td>{{ item.email }}</td>
+<td>
+          <div class="actions">
+
+
+            <button routerLink="/updateUser/{{item.id}}" mat-mini-fab color="accent" >
+              <mat-icon>edit</mat-icon>
+            </button>
+
+
+            <button (click)="delete(item.id)" mat-mini-fab color="warn" >
+              <mat-icon>delete</mat-icon>
+            </button>
+
+        
+        
+        
+        </div> 
+      </td>
+      </tr>
+
+
+
+    </table>
+    <button (click)="telaCadastro()" class =" novo-todo mat-elevation-z8" mat-stroked-button color="primary">NOVO USUÁRIO</button>
+
+</div>

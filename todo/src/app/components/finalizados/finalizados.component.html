@@ -1,0 +1,20 @@
+<div class="container">
+<h1>TASKS FINALIZADAS</h1>
+
+    <div class="badge">
+        <button  (click)="voltar()" mat-stroked-button color="primary" >Voltar</button>
+
+    </div>
+<div class="content" *ngFor="let item of listFinish">
+    <mat-card class="mat-elevation-z8">
+        <p>DATA PARA FINALIZAR:{{item.datafinalizar}} </p>
+        <mat-card-header>
+        
+          <mat-card-title>{{ item.titulo }}</mat-card-title>
+          <mat-card-subtitle>{{item.descricao}}</mat-card-subtitle>
+          <mat-card-subtitle>{{item.valorUnitario}}</mat-card-subtitle>
+        </mat-card-header>
+
+      </mat-card>
+</div>
+</div>

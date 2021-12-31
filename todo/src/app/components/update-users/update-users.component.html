@@ -1,0 +1,34 @@
+<form>
+
+    <h1>EDITAR MATERIAL</h1>
+    
+
+    
+     <div class="forms">
+    
+        <mat-form-field class="form" appearance="fill">
+            <mat-label>Titulo</mat-label>
+            <input [(ngModel)]="users.nome" name="users.nome" matInput placeholder="Cimento">
+          </mat-form-field>
+        
+          <mat-form-field class="form" appearance="fill">
+            <mat-label>Descrição</mat-label>
+            <input [(ngModel)]="users.perfil" name="users.perfil" matInput placeholder="Areia">
+          </mat-form-field>
+
+          <mat-form-field class="form" appearance="fill">
+            <mat-label>Valor Unitario</mat-label>
+            <input [(ngModel)]="users.perfil" name="users.perfil" matInput placeholder="Valor Unitario">
+          </mat-form-field>
+    
+     </div>
+    
+     <div class="buttons">
+        <button  (click)="update()"  mat-stroked-button color="primary">ATUALIZAR</button>
+        <button (click)="cancelar()"mat-stroked-button color="warn">CANCELAR</button>
+    
+    
+     </div>
+    
+    </form>
+    

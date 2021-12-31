@@ -1,0 +1,78 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th {
+    background-color: white;
+    border: 1px solid rgb(219, 214, 214);
+  }
+
+   .description{
+     margin-top: 2rem
+   }
+  td {
+    border: 1px solid #dddddd;
+    
+  }
+  td, th {
+    text-align: left;
+    padding: 8px;
+    height: 3rem
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+.container {
+    width: 85%;
+    margin: auto;
+}
+
+.badge{
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.badge button{
+    margin: auto;
+    width: 100%;
+}
+
+.content{
+    width: 100%;
+}
+
+
+.novo-todo{
+    margin-top: .8rem;
+    width: 100%;
+    margin: .1rem;
+ 
+    
+}
+
+mat-card{
+    margin-top: .8rem;
+    padding: .2rem;
+}
+
+p{
+    text-align: end;
+    font-weight: 600;
+    color: rgb(114, 111 ,111);
+    margin-bottom: 0;
+}
+
+.actions{
+
+    text-align: end;
+}
+
+.actions button{
+    margin: .3rem;
+    
+}

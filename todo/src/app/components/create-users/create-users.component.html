@@ -1,0 +1,42 @@
+<form>
+
+    <h1>Adicionando novo Usuario</h1>
+    
+
+    
+     <div class="forms">
+    
+        <mat-form-field class="form" appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input [(ngModel)]="user.nome" name="user.nome" matInput placeholder="joão">
+          </mat-form-field>
+        
+          <mat-form-field class="form" appearance="fill">
+            <mat-label>Perfil</mat-label>
+            <input [(ngModel)]="user.perfil" name="user.perfil" matInput placeholder="Engenheiro">
+          </mat-form-field>
+    
+          <mat-form-field class="form" appearance="fill">
+            <mat-label>Telefone</mat-label>
+            <input [(ngModel)]="user.telefone" name="user.telefone" matInput placeholder="4444-1111">
+          </mat-form-field>
+
+          <mat-form-field class="form" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input [(ngModel)]="user.email" name="user.email" matInput placeholder="usuario@seuEmail.com">
+          </mat-form-field>
+
+
+
+    
+     </div>
+    
+     <div class="buttons">
+        <button (click)="create()" mat-stroked-button color="primary">CRIAR</button>
+        <button (click)="cancelar()"mat-stroked-button color="warn">CANCELAR</button>
+    
+    
+     </div>
+    
+    </form>
+    
