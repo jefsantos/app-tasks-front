@@ -9,12 +9,10 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./create-users.component.css']
 })
 export class CreateUsersComponent implements OnInit {
-
-
-
   user: Users= {
 
     nome:'',
+    senha:'',
     perfil:'',
     telefone:'',
     email:''

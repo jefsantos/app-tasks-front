@@ -1,13 +1,34 @@
 <form>
 
-<h1>Adicionando novo Item</h1>
+
+
+<h1>Adicionando Novo Serviço</h1>
 
 <mat-form-field class="data-finalizar"  appearance="fill">
-    <mat-label>Data da Entrega</mat-label>
+    <mat-label>Data do Cadastro</mat-label>
     <input [(ngModel)]="todo.datafinalizar" name="todo.datafinalizar" matInput [matDatepicker]="dp3" disabled>
     <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
     <mat-datepicker #dp3 disabled="false"></mat-datepicker>
   </mat-form-field>
+
+
+  <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Informe seu ID para cadastrar seu serviço</mat-label>
+      <!--  [formControl]="myControl" (na linha 12)-->
+      <input type="text"
+             placeholder="Pick one"
+             aria-label="Number"
+             matInput
+              
+             [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option"> -
+       {{option}}  
+        </mat-option> 
+      </mat-autocomplete>  
+    </mat-form-field>
+  </form>
 
  <div class="forms">
 

@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   baseUrl:'http://localhost:8080/todos',
-  usersBaseUrl:'http://localhost:8080/users'
+  usersBaseUrl:'http://localhost:8080/users',
+  contUserBaseUrl: 'http://localhost:8080/users/contador'
 };
 
 /*

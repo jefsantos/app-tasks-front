@@ -20,6 +20,7 @@ export class UpdateUsersComponent implements OnInit {
   users: Users= {
 
     nome:'',
+    senha:'',
     perfil:'',
     email:'',
     telefone:'',

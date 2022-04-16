@@ -11,6 +11,7 @@ import { Users } from '../models/users';
 export class UsersService {
 
   usersBaseUrl = environment.usersBaseUrl;
+  contUserBaseUrl = environment.contUserBaseUrl;
 
   constructor(private http:HttpClient, private snack:MatSnackBar) { }
 
@@ -19,13 +20,14 @@ findAll(): Observable<Users[]>{
   return this.http.get<Users[]>(this.usersBaseUrl);
 }
 
+UsersCont(): Observable<Users[]>{
+  return this.http.get<Users[]>(this.contUserBaseUrl);
+}
+
 findById(id: any):Observable<Users>{
   const url =  `${this.usersBaseUrl}/${id}`
 
   return this.http.get<Users>(url)
-
-
-
 }
 
 update(users: Users): Observable<Users>{

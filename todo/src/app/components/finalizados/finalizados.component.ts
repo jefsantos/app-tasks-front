@@ -18,6 +18,7 @@ export class FinalizadosComponent implements OnInit {
   ngOnInit(): void {
 
     this.findAll();
+    
    
   }
 

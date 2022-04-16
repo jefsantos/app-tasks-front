@@ -4,11 +4,31 @@
 
     </div>
 
-    <button (click)="novoTodo()" class =" novo-todo mat-elevation-z8" mat-stroked-button color="primary">NOVO ITEM</button>
-    <button (click)="kanban()" class =" novo-todo mat-elevation-z8" mat-stroked-button color="primary">KANBAN</button>
+    <button (click)="novoTodo()" class =" novo-todo mat-elevation-z8" mat-stroked-button color="primary">NOVO SERVIÇO</button>
+    <button (click)="kanban()" class =" novo-todo mat-elevation-z8" mat-stroked-button color="primary">SERVIÇOS</button>
+    <button (click)="voltarUsersAll()" class =" novo-todo mat-elevation-z8" mat-stroked-button color="primary">USUARIOS</button>
+    <button (click)="voltarReadAll()" class =" novo-todo mat-elevation-z8" mat-stroked-button color="primary">LISTAGEM</button>
 
+    <mat-card >
+      <mat-card-title align ="center">Usuarios Cadastrados</mat-card-title>
+      <br/>
+      <mat-card-title align="center" style="color: #006400;">{{listCount}}</mat-card-title>
+      <mat-card-actions align="end">
+        <button mat-button>Like</button>
+        <button mat-button>Share</button>
+      </mat-card-actions>
+    </mat-card>
+    <br>
+    <mat-card>
+      <mat-card-title align="center">Empresas Cadastradas</mat-card-title>
+<br/>
+      <mat-card-title align="center">58</mat-card-title>
 
-
+      <mat-card-actions align="end">
+        <button mat-button>Like</button>
+        <button mat-button>Share</button>
+      </mat-card-actions>
+    </mat-card>
 
 
 <div class="content" *ngFor="let item of list">

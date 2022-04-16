@@ -3,12 +3,23 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Todo } from 'src/app/models/todo';
 import { TodoService } from 'src/app/services/todo.service';
 
+
+import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
+
+  myControl = new FormControl();
+  options: string[] = ['One', 'Two', 'Three'];
+ 
+ filteredOptions: Observable<string[]> | undefined;
+
 
   todo: Todo= {
 
@@ -23,8 +34,17 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
 
-  }
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value)),
+    );
 
+  }
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
   create(): void{
     this.formataData();
     this.service.create(this.todo).subscribe((resposta)=>{

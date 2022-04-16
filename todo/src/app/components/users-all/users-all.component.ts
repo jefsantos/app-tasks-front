@@ -4,6 +4,7 @@ import { Users } from 'src/app/models/users';
 import { TodoService } from 'src/app/services/todo.service';
 import { UsersService } from 'src/app/services/users.service';
 
+
 @Component({
   selector: 'app-users-all',
   templateUrl: './users-all.component.html',
@@ -13,6 +14,7 @@ export class UsersAllComponent implements OnInit {
 
   list: Users[]=[];
 
+
   constructor(private service: UsersService, serviceRead: TodoService, private router: Router) { }
 
   ngOnInit(): void {
@@ -21,14 +23,21 @@ export class UsersAllComponent implements OnInit {
 
   }
 
+
   findAll() {
     this.service.findAll().subscribe(data => {
       this.list = data;
 
-      if(data.length==1){
-        this.service.message(data.length +'Usuario(s) Cadastrado(s)');
+      if(data.length===1){
+        this.service.message(data.length +' Usuario Cadastrado');
+
+      }else if(data.length>1){
+
+        this.service.message(data.length + ' Usuarios Cadastrados');
+
+        
       }else if(data.length< 1){
-        alert('não há users cadastrados');
+        this.service.message('NÃO HÁ USUÁRIO CADASTRADOS')
       }
 
     });
@@ -59,6 +68,9 @@ export class UsersAllComponent implements OnInit {
 
   }
 
+  voltarReadAll():void{
+    this.router.navigate(['']);
+  }
 
 
 

@@ -6,6 +6,7 @@
       <tr>
           <th>S.no</th>
           <th>Nome</th>
+       <!--   <th>Senha</th> --> 
           <th>Perfil</th>
           <th>Telefone</th>
           <th>E-mail</th>
@@ -14,6 +15,7 @@
       <tr *ngFor="let item of list; index as i">   
           <td>{{ i }}</td>
           <td>{{ item.nome }}</td>
+       <!--   <td>{{ item.senha }}</td> -->
           <td>{{ item.perfil }}</td>
           <td>{{ item.telefone }}</td>
           <td>{{ item.email }}</td>
@@ -41,5 +43,9 @@
 
     </table>
     <button (click)="telaCadastro()" class =" novo-todo mat-elevation-z8" mat-stroked-button color="primary">NOVO USUÁRIO</button>
+    <br/>
+    <button (click)="voltarReadAll()" class =" novo-todo mat-elevation-z8" mat-stroked-button color="primary">
+      <mat-icon>home</mat-icon>
+    </button>
 
 </div>
