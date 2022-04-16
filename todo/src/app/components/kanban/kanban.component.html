@@ -2,80 +2,52 @@
  
 
   <div class="kanban mat-elevation-z8" >
-      <div class="example-container">
-          <h2>Orçado</h2>
-        
-          <div
-            cdkDropList
-            #orcadoList="cdkDropList"
-            [cdkDropListData]="orcado"
-            [cdkDropListConnectedTo]="[compradoList]"
-            class="example-list"
-            (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let item of orcado" cdkDrag>{{item}}</div>
-          </div>
-        </div>
-  
-  
-  
-        <div class="example-container">
-          <h2>Comprado</h2>
-        
-          <div
-            cdkDropList
-            #compradoList="cdkDropList"
-            [cdkDropListData]="comprado"
-            [cdkDropListConnectedTo]="[entregueList, orcadoList]"
-            class="example-list"
-            (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let item of comprado" cdkDrag>{{item}}</div>
-          </div>
-        </div>
-        
-        <div class="example-container">
-          <h2>Entregue</h2>
-        
-          <div
-            cdkDropList
-            #entregueList="cdkDropList"
-            [cdkDropListData]="entregue"
-            [cdkDropListConnectedTo]="[compradoList, notaFiscalList]"
-            class="example-list"
-            (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let item of entregue" cdkDrag>{{item}}</div>
-          </div>
-        </div>
-        
-  
+    <div class="content" *ngFor="let item of list">
 
-        <div class="example-container">
-          <h2>Nota Fiscal</h2>
-        
-          <div
-            cdkDropList
-            #notaFiscalList="cdkDropList"
-            [cdkDropListData]="notaFiscal"
-            [cdkDropListConnectedTo]="[entregueList]"
-            class="example-list"
-            (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let item of notaFiscal" cdkDrag>{{item}}</div>
+
+      <mat-card class="mat-elevation-z8">
+          <p>DATA PARA FINALIZAR:{{item.datafinalizar}} </p>
+          <mat-card-header>
+          
+            <mat-card-title>{{ item.titulo }}</mat-card-title>
+            <mat-card-subtitle>{{item.descricao}}</mat-card-subtitle>
+            <mat-card-subtitle>R$: {{item.valorUnitario}}, 00</mat-card-subtitle>
+          </mat-card-header>
+  
+          <div class="actions">
+              <button (click)="finalizar(item)"mat-mini-fab color="primary" >
+                  <mat-icon>done</mat-icon>
+                </button>
+  
+                <button routerLink="update/{{item.id}}" mat-mini-fab color="accent" >
+                  <mat-icon>edit</mat-icon>
+                </button>
+  
+                <button (click)="delete(item.id)" mat-mini-fab color="warn" >
+                  <mat-icon>delete</mat-icon>
+                </button>
+  
+  
+  
           </div>
-        </div>
+        </mat-card>
+  
+  
 
 
 
 
       </div>
-        
-  
-      <button (click)="voltarReadAll()" class =" novo-todo mat-elevation-z8" mat-stroked-button color="primary">listagem</button>
-      <button (click)="voltarUsersAll()" class =" novo-todo mat-elevation-z8" mat-stroked-button color="primary">Users</button>
-  
-  
-  
-  
-  
-  
-  
-  
+          
   </div>
+
+<br>
+  
+  <button (click)="voltarReadAll()" class =" novo-todo mat-elevation-z8" mat-stroked-button color="primary">
+    <mat-icon>home</mat-icon>
+
+  </button>
+  <button (click)="voltarUsersAll()" class =" novo-todo mat-elevation-z8" mat-stroked-button color="primary">Users</button>
+
+
+</div>

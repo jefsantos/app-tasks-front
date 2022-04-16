@@ -14,7 +14,7 @@
       <br/>
       <mat-card-title align="center" style="color: #006400;">{{listCount}}</mat-card-title>
       <mat-card-actions align="end">
-        <button mat-button>Like</button>
+        <button (click)="voltarUsersAll()" mat-button>ver</button>
         <button mat-button>Share</button>
       </mat-card-actions>
     </mat-card>
@@ -29,40 +29,17 @@
         <button mat-button>Share</button>
       </mat-card-actions>
     </mat-card>
+<br>
+    <mat-card>
+      <mat-card-title align="center">Serviços Cadastrados</mat-card-title>
+<br/>
+      <mat-card-title align="center">1.185</mat-card-title>
 
-
-<div class="content" *ngFor="let item of list">
-
-
-    <mat-card class="mat-elevation-z8">
-        <p>DATA PARA FINALIZAR:{{item.datafinalizar}} </p>
-        <mat-card-header>
-        
-          <mat-card-title>{{ item.titulo }}</mat-card-title>
-          <mat-card-subtitle>{{item.descricao}}</mat-card-subtitle>
-          <mat-card-subtitle>R$: {{item.valorUnitario}}, 00</mat-card-subtitle>
-        </mat-card-header>
-
-        <div class="actions">
-            <button (click)="finalizar(item)"mat-mini-fab color="primary" >
-                <mat-icon>done</mat-icon>
-              </button>
-
-              <button routerLink="update/{{item.id}}" mat-mini-fab color="accent" >
-                <mat-icon>edit</mat-icon>
-              </button>
-
-              <button (click)="delete(item.id)" mat-mini-fab color="warn" >
-                <mat-icon>delete</mat-icon>
-              </button>
-
-
-
-        </div>
-      </mat-card>
-
-
-
+      <mat-card-actions align="end">
+        <button (click)="kanban()" mat-button>Ver</button>
+        <button mat-button>Share</button>
+      </mat-card-actions>
+    </mat-card>
 
 </div>
 

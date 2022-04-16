@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BoardKanban } from 'src/app/models/BoardKanban';
 import { Colunas } from 'src/app/models/Colunas';
+import { Todo } from 'src/app/models/todo';
+import { TodoService } from 'src/app/services/todo.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-kanban',
@@ -11,91 +14,18 @@ import { Colunas } from 'src/app/models/Colunas';
 })
 export class KanbanComponent implements OnInit {
 
-  boardKanban : BoardKanban = new BoardKanban('teste Classe', [
-
-    new Colunas('orcado', [
-      "teste_Ideias",
-      "this test is ideia",
-      "jhjhsjhjhsj"
-    ]),
-
-    new Colunas('comprado',[
-      "teste Doing1",
-      "foo",
-      "teste3_Doing3"
-    ]),
-
-
-     new Colunas('entregue', [
-
-      "teste Done1",
-      "Teste Done 2",
-      "teste Done 3"
-
-     ]),
-
-     new Colunas('notaFiscal', [
-
-      "NOTA Done1",
-      "NOTA Done 2",
-      "NOTA Done 3"
-
-     ])
-
-
-
-
-  ]);
+  closed = 0 ;
+  list: Todo[]=[];
+  listFinish: Todo[]=[];
+  listCount: any;
 
   ngOnInit(): void {
+
+    this.findAll();
   }
 
-  orcado = [
-    'Orçado1',
-    'Orçado2',
-    'Orçado3',
-    'Orçado4'
-  ];
 
-
-  comprado = [
-    'Comprado1',
-    'Comprado2',
-    'Comprado3',
-    'Comprado4'
-  ];
-
-  entregue=[
-    'Entregue1',
-    'Entregue1',
-    'Entregue1',
-    'Entregue1'
-  ];
-
-
-  notaFiscal=[
-    'Nota',
-    'Nota1',
-    'Nota2',
-    'Nota3'
-  ];
-
-
-  drop(event: CdkDragDrop<string[]>){
-    console.log('from +' + event.previousContainer.id + ' to: '
-    + event.container.id);
-
-    if(event.previousContainer === event.container){
-      moveItemInArray(event.container.data, event.previousIndex,
-        event.currentIndex);
-    }else{
-      transferArrayItem(event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex);
-    }
-  }
-  constructor(private router: Router) { }
+  constructor(private service:TodoService, private usersService: UsersService,private router: Router) { }
 
  
 
@@ -112,6 +42,44 @@ export class KanbanComponent implements OnInit {
 
   voltarUsersAll():void{
     this.router.navigate(['/usersAll']);
+  }
+
+  delete(id: any):void{
+    this.service.delete(id).subscribe((resposta)=>{
+      if(resposta===null){
+        this.service.message('Tarefa deletada com sucesso')
+
+        this.list = this.list.filter(todo=>todo.id !==id);
+      }
+    })
+
+  }
+
+  finalizar(item: Todo):void{
+    item.finalizado= true
+    this.service.update(item).subscribe(()=>{
+      this.list = this.list.filter(todo=>todo.id !==item.id);
+        this.closed++;
+  
+    })
+  
+  }
+
+  findAll():void{
+
+    this.service.findAll().subscribe((resposta)=>{
+      resposta.forEach(todo=>{
+        if(todo.finalizado){
+          this.listFinish.push(todo);
+        }else{
+          this.list.push(todo);
+        }
+
+      })
+      this.closed= this.listFinish.length
+    
+    })
+
   }
 
 }
